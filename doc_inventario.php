@@ -1,3 +1,10 @@
+<?php
+
+include("./conexion.php");
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -19,55 +26,40 @@
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
               <li class=""><a href="index.html">Inicio</a></li>
-              <li class=""><a href="especialidad.html">Especialidades</a></li>
-              <li class=""><a href="agenda.html">Agenda una cita</a></li>
-              <li class=""><a href="quienes.html">¿Quiénes somos?</a></li>
-            </ul>
+              <li class=active""><a href="doc_inventario.html">Inventario</a></li>
+              <li class=""><a href="historiales.html">Historiales Clínicos</a></li>
+              <li class=""><a href="habitaciones.html">Habitaciones</a></li>
+              <li class=""><a href="bancosangre.html">Banco de Sangre</a></li>
+              <li class=""><a href="">Hola, USUARIO &nbsp;&nbsp;</a></li>
             <ul class="side-nav oro" id="mobile-demo">
               <li class=""><a href="index.html">Inicio</a></li>
-              <li class=""><a href="especialidad.html">Especialidades</a></li>
-              <li class=""><a href="agenda.html">Agenda una cita</a></li>
-              <li class=""><a href="quienes.html">¿Quiénes somos?</a></li>
+              <li class="active"><a href="doc_inventario.html">Inventario</a></li>
+              <li class=""><a href="historiales.html">Historiales Clínicos</a></li>
+              <li class=""><a href="habitaciones.html">Habitaciones</a></li>
+              <li class=""><a href="bancosangre.html">Banco de Sangre</a></li>
+              <li class=""><a href="">Hola, USUARIO &nbsp;&nbsp;</a></li>
             </ul>
           </div>
         </nav>
       </div>
     </main>
 
-    <div class="row">
-      <h4>Iniciar sesión</h4>
-      <form class="col s12">
-        <div class="row">
-          <div class="input-field col s12">
-              <input id="user" type="text">
-              <label for="user">Usuario</label>
-          </div>
-          <div class="input-field col s12">
-            <input id="password" type="password">
-            <label for="password">Contraseña</label>
-          </div>
-          <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
-            <i class="material-icons right">send</i>
-          </button>
-        </div>
-      </form>
-    </div>
 
-    <br>
-    <br>
-    <br>
+
     <footer class="page-footer">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
                 <h5>Dirección</h5>
                 <p class="grey-text text-lighten-4">Aquí va la dirección</p>
+
                 <h5>Teléfonos</h5>
                 <p class="grey-text text-lighten-4">Aquí van los teléfonos</p>
               </div>
 
               <div class="col l4 offset-l2 s12">
                 <h5>Correo</h5> <span class="white-text">Aquí va el correo</span><br>
+
               </div>
             </div>
           </div>
@@ -87,5 +79,3 @@
 
   </body>
 </html>
-
-
