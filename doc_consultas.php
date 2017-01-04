@@ -9,6 +9,10 @@ $password = $_GET["ps"];
 $sql = "SELECT * FROM personal WHERE Usuario = '$user' and Contra = '$password'";
 $res = mysqli_query($conector,$sql);
 
+if (mysqli_num_rows($res) == 0 ) {
+    header('Location: errorLogin.html');
+}
+
 while ($fila = mysqli_fetch_array($res)){
       $nom = utf8_encode($fila["Nombre"]);   
       $pat = utf8_encode($fila["APaterno"]);   
