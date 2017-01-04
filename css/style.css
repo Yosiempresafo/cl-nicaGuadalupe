@@ -134,3 +134,8 @@ button:focus{
 .slider .indicators .indicator-item.active {
     background-color: #455a64;
 }
+
+
+.gray{
+  color: #455a64;
+}

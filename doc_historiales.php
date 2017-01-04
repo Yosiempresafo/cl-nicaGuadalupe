@@ -1,5 +1,4 @@
 <?php
-
 include("./conexion.php");
 
 ?>
@@ -26,16 +25,16 @@ include("./conexion.php");
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
               <li class=""><span class="gray">Hola, USUARIO&nbsp;</span></li>
-              <li class="active"><a href="doc_inventario.php">Inventario</a></li>
+              <li class=""><a href="doc_inventario.php">Inventario</a></li>
               <li class=""><a href="doc_consultas.php">Consultas</a></li>
-              <li class=""><a href="doc_historiales.php">Historiales Clínicos</a></li>
+              <li class="active"><a href="doc_historiales.php">Historiales Clínicos</a></li>
               <li class=""><a href="admin.php">¿Eres Administrador?</a></li>
               <li class=""><a href="index.html">Salir&nbsp;&nbsp;</a></li>
             <ul class="side-nav oro" id="mobile-demo">
               <li class=""><a href="">Hola, USUARIO</a></li>
-              <li class="active"><a href="doc_inventario.php">Inventario</a></li>
+              <li class=""><a href="doc_inventario.php">Inventario</a></li>
               <li class=""><a href="doc_consultas.php">Consultas</a></li>
-              <li class=""><a href="doc_historiales.php">Historiales Clínicos</a></li>
+              <li class="active"><a href="doc_historiales.php">Historiales Clínicos</a></li>
               <li class=""><a href="admin.php">¿Eres Administrador?</a></li>
               <li class=""><a href="index.html">Salir&nbsp;&nbsp;</a></li>
             </ul>

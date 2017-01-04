@@ -1,3 +1,10 @@
+<?php
+
+include("./conexion.php");
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -18,53 +25,27 @@
             <a class="brand-logo" href="index.html">&nbsp;&nbsp;&nbsp;Clínica Guadalupe</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-              <li class="active"><a href="index.html">Inicio</a></li>
-              <li class=""><a href="especialidad.html">Especialidades</a></li>
-              <li class=""><a href="agenda.html">Agenda una cita</a></li>
-              <li class=""><a href="quienes.html">¿Quiénes somos?</a></li>
-            </ul>
+              <li class=""><span class="gray">Hola, USUARIO&nbsp;</span></li>
+              <li class=""><a href="doc_inventario.php">Inventario</a></li>
+              <li class=""><a href="doc_consultas.php">Consultas</a></li>
+              <li class=""><a href="doc_historiales.php">Historiales Clínicos</a></li>
+              <li class="active"><a href="admin.php">¿Eres Administrador?</a></li>
+              <li class=""><a href="index.html">Salir&nbsp;&nbsp;</a></li>
             <ul class="side-nav oro" id="mobile-demo">
-              <li class="active"><a href="index.html">Inicio</a></li>
-              <li class=""><a href="especialidad.html">Especialidades</a></li>
-              <li class=""><a href="agenda.html">Agenda una cita</a></li>
-              <li class=""><a href="quienes.html">¿Quiénes somos?</a></li>
+              <li class=""><a href="">Hola, USUARIO</a></li>
+              <li class=""><a href="doc_inventario.php">Inventario</a></li>
+              <li class=""><a href="doc_consultas.php">Consultas</a></li>
+              <li class=""><a href="doc_historiales.php">Historiales Clínicos</a></li>
+              <li class="active"><a href="admin.php">¿Eres Administrador?</a></li>
+              <li class=""><a href="index.html">Salir&nbsp;&nbsp;</a></li>
             </ul>
           </div>
         </nav>
       </div>
     </main>
-  
-<div class="container">
- <table class="highlight responsive-table">
-        <tbody>
-          <tr>
-            <td>Ginecología/Colposcopista</td>
-            <td>Anestiología</td>
-          </tr>
-          <tr>
-            <td>Gastroentrólogo</td>
-            <td>Ortopedia</td>
-          </tr>
-          <tr>
-            <td>Med Interna</td>
-            <td>Otorrinolarngólogo</td>
-          </tr>
-          <tr>
-            <td>Urología</td>
-            <td>Neurología</td>
-          </tr>
-          <tr>
-            <td>Pediatría</td>
-            <td>Cirugía Plástica</td>
-          </tr>
-          <tr>
-            <td>Dermatología</td>
-            <td>Psicología</td>
-          </tr>
-        </tbody>
-      </table> 
-    </div>
-    
+
+
+
     <footer class="page-footer">
           <div class="container">
             <div class="row">
