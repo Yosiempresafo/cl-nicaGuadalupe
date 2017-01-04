@@ -42,6 +42,38 @@ include("./conexion.php");
           </div>
         </nav>
       </div>
+
+  <div class="row">
+    <div class="col offset-m1 m10">
+    <h3>Inventario</h3>
+    <table class="highlight responsive-table">
+      <thead>
+          <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+          </tr>
+      </thead>
+      <tbody>
+      <?php 
+        $res = mysqli_query($conector,"SELECT * FROM inventario");
+
+        while ($fila = mysqli_fetch_array($res)){
+          $id = utf8_encode($fila["idInventario"]);   
+          $nom = utf8_encode($fila["Nombre"]);    
+          $cant = utf8_encode($fila["Cantidad"]);
+          $pre = utf8_encode($fila["Precio"]);
+          echo '<tr><td>'.$id."</td> <td>".$nom."</td> <td>".$cant."</td> <td>".$pre.'</td></tr>';
+        }
+      ?>
+  
+    </tbody>
+    </table>
+
+    </div>
+  </div>
+
     </main>
 
 
