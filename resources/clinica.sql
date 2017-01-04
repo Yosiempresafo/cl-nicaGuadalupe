@@ -1,256 +1,223 @@
--- MySQL dump 10.13  Distrib 5.7.14, for Win64 (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Host: localhost    Database: clinica
--- ------------------------------------------------------
--- Server version	5.7.14-log
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 04-01-2017 a las 08:31:07
+-- Versión del servidor: 10.1.19-MariaDB
+-- Versión de PHP: 7.0.13
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `director`
+-- Base de datos: `clinica`
 --
 
-DROP TABLE IF EXISTS `director`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `director` (
-  `RFC` varchar(20) NOT NULL,
-  `Nombre` varchar(30) NOT NULL,
-  `ApPaterno` varchar(20) DEFAULT NULL,
-  `ApMaterno` varchar(20) DEFAULT NULL,
-  `Clinica` varchar(40) NOT NULL,
-  PRIMARY KEY (`Clinica`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `director`
+-- Estructura de tabla para la tabla `cita`
 --
 
-LOCK TABLES `director` WRITE;
-/*!40000 ALTER TABLE `director` DISABLE KEYS */;
-/*!40000 ALTER TABLE `director` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `cita` (
+  `idCita` int(10) NOT NULL,
+  `Fecha` date NOT NULL,
+  `Hora` int(11) NOT NULL,
+  `Medicamento1` varchar(30) DEFAULT NULL,
+  `Medicamento2` varchar(30) DEFAULT NULL,
+  `Medicamento3` varchar(30) DEFAULT NULL,
+  `Medicamento4` varchar(30) DEFAULT NULL,
+  `idPaciente` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `enfermeria`
+-- Estructura de tabla para la tabla `inventario`
 --
 
-DROP TABLE IF EXISTS `enfermeria`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `enfermeria` (
-  `RFC` varchar(20) NOT NULL,
-  `Nombre` varchar(45) NOT NULL,
-  `ApPaterno` varchar(20) DEFAULT NULL,
-  `ApMaterno` varchar(20) DEFAULT NULL,
-  `Correo` varchar(60) DEFAULT NULL,
-  `telefono` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`RFC`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `enfermeria`
---
-
-LOCK TABLES `enfermeria` WRITE;
-/*!40000 ALTER TABLE `enfermeria` DISABLE KEYS */;
-/*!40000 ALTER TABLE `enfermeria` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `historial`
---
-
-DROP TABLE IF EXISTS `historial`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `historial` (
-  `Expediente` varchar(20) DEFAULT NULL,
-  `FechaCita` date NOT NULL,
-  `Tipo_Cita` varchar(20) NOT NULL,
-  `RFC_M` varchar(20) NOT NULL,
-  `RFC_E` varchar(20) NOT NULL,
-  `medicamento_1` varchar(40) DEFAULT NULL,
-  `medicamento_2` varchar(40) DEFAULT NULL,
-  `medicamento_3` varchar(40) DEFAULT NULL,
-  `medicamento_4` varchar(40) DEFAULT NULL,
-  `medicamento_5` varchar(40) DEFAULT NULL,
-  KEY `MEDICAMENTO1` (`medicamento_1`),
-  KEY `MEDICAMENTO2` (`medicamento_2`),
-  KEY `MEDICAMENTO3` (`medicamento_3`),
-  KEY `MEDICAMENTO4` (`medicamento_4`),
-  KEY `MEDICAMENTO5` (`medicamento_5`),
-  KEY `EXPEDIENTE1` (`Expediente`),
-  KEY `RFCM` (`RFC_M`),
-  KEY `RFCE` (`RFC_E`),
-  CONSTRAINT `EXPEDIENTE1` FOREIGN KEY (`Expediente`) REFERENCES `paciente` (`Expediente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `MEDICAMENTO1` FOREIGN KEY (`medicamento_1`) REFERENCES `medicamentos` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `MEDICAMENTO2` FOREIGN KEY (`medicamento_2`) REFERENCES `medicamentos` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `MEDICAMENTO3` FOREIGN KEY (`medicamento_3`) REFERENCES `medicamentos` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `MEDICAMENTO4` FOREIGN KEY (`medicamento_4`) REFERENCES `medicamentos` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `MEDICAMENTO5` FOREIGN KEY (`medicamento_5`) REFERENCES `medicamentos` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `RFCE` FOREIGN KEY (`RFC_E`) REFERENCES `enfermeria` (`RFC`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `RFCM` FOREIGN KEY (`RFC_M`) REFERENCES `medico` (`RFC`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `historial`
---
-
-LOCK TABLES `historial` WRITE;
-/*!40000 ALTER TABLE `historial` DISABLE KEYS */;
-/*!40000 ALTER TABLE `historial` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `inventario`
---
-
-DROP TABLE IF EXISTS `inventario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `inventario` (
-  `Instrumento` varchar(10) DEFAULT NULL,
-  `Medicamento` varchar(40) DEFAULT NULL,
-  KEY `INSTRU` (`Instrumento`),
-  KEY `MEDI` (`Medicamento`),
-  CONSTRAINT `INSTRU` FOREIGN KEY (`Instrumento`) REFERENCES `material_cirugia` (`Nombre`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `MEDI` FOREIGN KEY (`Medicamento`) REFERENCES `medicamentos` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `idInventario` int(5) NOT NULL,
+  `Nombre` varchar(30) NOT NULL,
+  `Cantidad` int(8) UNSIGNED ZEROFILL NOT NULL,
+  `Precio` float UNSIGNED ZEROFILL NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `inventario`
+-- Estructura de tabla para la tabla `medico`
 --
 
-LOCK TABLES `inventario` WRITE;
-/*!40000 ALTER TABLE `inventario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `inventario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `material_cirugia`
---
-
-DROP TABLE IF EXISTS `material_cirugia`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `material_cirugia` (
-  `Nombre` varchar(45) NOT NULL,
-  `Cantidad` int(3) NOT NULL,
-  PRIMARY KEY (`Nombre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `material_cirugia`
---
-
-LOCK TABLES `material_cirugia` WRITE;
-/*!40000 ALTER TABLE `material_cirugia` DISABLE KEYS */;
-/*!40000 ALTER TABLE `material_cirugia` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `medicamentos`
---
-
-DROP TABLE IF EXISTS `medicamentos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `medicamentos` (
-  `nombre` varchar(40) NOT NULL,
-  `Cantidad` int(4) NOT NULL,
-  `Precio` float(6,3) NOT NULL,
-  PRIMARY KEY (`nombre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `medicamentos`
---
-
-LOCK TABLES `medicamentos` WRITE;
-/*!40000 ALTER TABLE `medicamentos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `medicamentos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `medico`
---
-
-DROP TABLE IF EXISTS `medico`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `medico` (
-  `RFC` varchar(20) NOT NULL,
-  `Nombre` varchar(45) NOT NULL,
-  `ApPaterno` varchar(20) DEFAULT NULL,
-  `ApMaterno` varchar(20) DEFAULT NULL,
-  `Correo` varchar(60) DEFAULT NULL,
-  `Telefono` varchar(20) DEFAULT NULL,
-  `Clinica` varchar(40) DEFAULT NULL,
-  PRIMARY KEY (`RFC`),
-  KEY `ClINI1` (`Clinica`),
-  CONSTRAINT `ClINI1` FOREIGN KEY (`Clinica`) REFERENCES `director` (`Clinica`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `idMedico` int(3) NOT NULL,
+  `RFC` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `medico`
+-- Volcado de datos para la tabla `medico`
 --
 
-LOCK TABLES `medico` WRITE;
-/*!40000 ALTER TABLE `medico` DISABLE KEYS */;
-/*!40000 ALTER TABLE `medico` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `medico` (`idMedico`, `RFC`) VALUES
+(5, 'asdfghjklq1234567893'),
+(6, 'mczxczx65132');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `paciente`
+-- Estructura de tabla para la tabla `paciente`
 --
 
-DROP TABLE IF EXISTS `paciente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `paciente` (
-  `Expediente` varchar(20) NOT NULL,
-  `Nombre` varchar(45) NOT NULL,
-  `ApPaterno` varchar(20) DEFAULT NULL,
-  `ApMaterno` varchar(20) DEFAULT NULL,
-  `Correo` varchar(60) DEFAULT NULL,
-  `Telefono` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`Expediente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `idPaciente` int(4) NOT NULL,
+  `Nombre` varchar(20) NOT NULL,
+  `APaterno` varchar(20) NOT NULL,
+  `AMaterno` varchar(20) NOT NULL,
+  `Edad` int(3) NOT NULL,
+  `TipoSangre` varchar(2) NOT NULL,
+  `Domicilio` varchar(45) NOT NULL,
+  `Correo` varchar(35) NOT NULL,
+  `Telefono` varchar(14) NOT NULL,
+  `Alergias` varchar(45) NOT NULL,
+  `Historial` varchar(1000) NOT NULL,
+  `idMedico` int(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `paciente`
+-- Volcado de datos para la tabla `paciente`
 --
 
-LOCK TABLES `paciente` WRITE;
-/*!40000 ALTER TABLE `paciente` DISABLE KEYS */;
-/*!40000 ALTER TABLE `paciente` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `paciente` (`idPaciente`, `Nombre`, `APaterno`, `AMaterno`, `Edad`, `TipoSangre`, `Domicilio`, `Correo`, `Telefono`, `Alergias`, `Historial`, `idMedico`) VALUES
+(4, 'FERNANDA', 'DE LA HUERTA', 'JIMENEZ', 54, 'A-', 'PITAGORAS 1000 COL DEL VALLE', 'FERHJ@HOTMAIL.COM', '555642367', 'CLONAZEPAN', 'ESTO ES UN HISTORIAL', 5),
+(5, 'JUANITO', 'GUITIERRZ', 'FICGU', 57, 'A-', 'MARUZALEN 121', 'JAHD@LIVE.COM', '555642367', 'NINGUNA', 'ESTO ES UN HISTORIAL', 6),
+(6, 'PANCHITO', 'RODRIGUEZ', 'JIMENEZ', 57, 'O+', 'JAM JAM 12', 'TRIPI@LIVE.COM', '6771276', 'PERROS', 'ESTO ES UN HISTORIAL', 6);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `personal`
+--
+
+CREATE TABLE `personal` (
+  `RFC` varchar(20) NOT NULL,
+  `Nombre` varchar(15) NOT NULL,
+  `APaterno` varchar(20) NOT NULL,
+  `AMaterno` varchar(20) NOT NULL,
+  `Correo` varchar(35) NOT NULL,
+  `Telefono` varchar(14) NOT NULL,
+  `Direccion` varchar(45) DEFAULT NULL,
+  `Usuario` varchar(20) NOT NULL,
+  `Contra` varchar(20) NOT NULL,
+  `Admin` varchar(1) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `personal`
+--
+
+INSERT INTO `personal` (`RFC`, `Nombre`, `APaterno`, `AMaterno`, `Correo`, `Telefono`, `Direccion`, `Usuario`, `Contra`, `Admin`) VALUES
+('asdfghjklq1234567893', 'Rodolfo', 'Martinez', 'Soza', 'asdasada@gmail.com', '55103648', 'lsdnfldsfnjsdnfjkds sdfjsdnfjsdnfjkds ', 'ads', '123456', '1'),
+('mczxczx65132', 'Luis', 'LAra', 'Mata', 'popqwieqop@hotmail.com', '55321649', 'qwuehqwoeqw wqpoeqpo', 'tpo', '798465', '0'),
+('qwoeuq213', 'Angel', 'Rdz', 'Mdz', 'qwieoqwoie@hotmail.com', '65482317', 'qwoewq poqwiepq', 'qwpo', '123asdasd', '0');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `cita`
+--
+ALTER TABLE `cita`
+  ADD PRIMARY KEY (`idCita`),
+  ADD UNIQUE KEY `idCita_UNIQUE` (`idCita`),
+  ADD UNIQUE KEY `Fecha_UNIQUE` (`Fecha`),
+  ADD UNIQUE KEY `Hora_UNIQUE` (`Hora`),
+  ADD KEY `fk_Cita_Paciente1_idx` (`idPaciente`);
+
+--
+-- Indices de la tabla `inventario`
+--
+ALTER TABLE `inventario`
+  ADD PRIMARY KEY (`idInventario`),
+  ADD UNIQUE KEY `idInventario_UNIQUE` (`idInventario`);
+
+--
+-- Indices de la tabla `medico`
+--
+ALTER TABLE `medico`
+  ADD PRIMARY KEY (`idMedico`),
+  ADD KEY `RFC_idx` (`RFC`);
+
+--
+-- Indices de la tabla `paciente`
+--
+ALTER TABLE `paciente`
+  ADD PRIMARY KEY (`idPaciente`),
+  ADD UNIQUE KEY `idPaciente_UNIQUE` (`idPaciente`),
+  ADD KEY `idMedico_idx` (`idMedico`);
+
+--
+-- Indices de la tabla `personal`
+--
+ALTER TABLE `personal`
+  ADD PRIMARY KEY (`RFC`),
+  ADD UNIQUE KEY `RFC_UNIQUE` (`RFC`),
+  ADD UNIQUE KEY `Usuario_UNIQUE` (`Usuario`),
+  ADD UNIQUE KEY `Contra_UNIQUE` (`Contra`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `cita`
+--
+ALTER TABLE `cita`
+  MODIFY `idCita` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `inventario`
+--
+ALTER TABLE `inventario`
+  MODIFY `idInventario` int(5) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `medico`
+--
+ALTER TABLE `medico`
+  MODIFY `idMedico` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT de la tabla `paciente`
+--
+ALTER TABLE `paciente`
+  MODIFY `idPaciente` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `cita`
+--
+ALTER TABLE `cita`
+  ADD CONSTRAINT `fk_Cita_Paciente1` FOREIGN KEY (`idPaciente`) REFERENCES `paciente` (`idPaciente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `medico`
+--
+ALTER TABLE `medico`
+  ADD CONSTRAINT `RFC` FOREIGN KEY (`RFC`) REFERENCES `personal` (`RFC`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `paciente`
+--
+ALTER TABLE `paciente`
+  ADD CONSTRAINT `idMedico` FOREIGN KEY (`idMedico`) REFERENCES `medico` (`idMedico`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2016-12-30 15:01:56
