@@ -83,7 +83,7 @@ footer.page-footer {
 
 
 a {
-    color: #e53935;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -117,15 +117,20 @@ button:focus{
 
 
 .side-nav a.btn:hover, .side-nav a.btn-large:hover, .side-nav a.btn-large:hover {
-  background-color: #e53935;
+  background-color: #fff;
   color: #fff;
 }
 
 
 [type="radio"]:checked+label:after,[type="radio"].with-gap:checked+label:before,[type="radio"].with-gap:checked+label:after{
-  border:2px solid #e53935;
+  border:2px solid #455a64;
 }
 [type="radio"]:checked+label:after,[type="radio"].with-gap:checked+label:after{
-  background-color: #e53935;
+  background-color: #455a64;
   z-index:0;
+}
+
+
+.slider .indicators .indicator-item.active {
+    background-color: #455a64;
 }
