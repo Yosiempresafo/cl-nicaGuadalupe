@@ -1,7 +1,6 @@
 <?php
 include("./conexion.php");
 session_start(); 
-$user = $_SESSION['us'];
 $nom = $_SESSION['nom'];
 $pat = $_SESSION['pat'];
 $mat = $_SESSION['mat'];

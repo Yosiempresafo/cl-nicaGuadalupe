@@ -49,7 +49,7 @@ $mat = $_SESSION['mat'];
 
   <div class="row">
     <div class="col offset-m1 m10">
-    <h3>Inventario</h3>
+    <h3 class="center">Inventario</h3>
     <table class="highlight responsive-table">
       <thead>
           <tr>

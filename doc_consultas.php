@@ -9,7 +9,6 @@ $password = $_GET["ps"];
 $_SESSION['us'] = $user;
 $_SESSION['ps'] = $password;
 
-echo $_SESSION['us'];
 
 
 $sql = "SELECT * FROM personal WHERE Usuario = '$user' and Contra = '$password'";
@@ -75,8 +74,46 @@ while ($fila = mysqli_fetch_array($res)){
           </div>
         </nav>
       </div>
-    </main>
 
+
+  <div class="row">
+    <div class="col offset-m1 m10">
+    <h3 class="center">Citas</h3>
+    <table class="highlight responsive-table">
+      <thead>
+          <tr>
+              <th>idCita</th>
+              <th>Especialidad</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Edad</th>
+              <th>Especialidad</th>
+              <th>idPaciente</th>
+          </tr>
+      </thead>
+      <tbody>
+
+    <?php 
+    $res = mysqli_query($conector,"SELECT * FROM cita A INNER JOIN paciente B on A.idPaciente=B.idPaciente WHERE B.idMedico IS NULL;");
+    while ($fila = mysqli_fetch_array($res)){
+      $idc = utf8_encode($fila["idCita"]);    
+      $espe = utf8_encode($fila["Especialidad"]);   
+      $fecha = utf8_encode($fila["Fecha"]);
+      $hor = utf8_encode($fila["Hora"]);
+      $edad = utf8_encode($fila["Edad"]);
+      $med1 = utf8_encode($fila["Especialidad"]);
+      $idp = utf8_encode($fila["idPaciente"]);
+
+      echo '<tr><td>'.$idc."</td> <td>".$espe."</td> <td>".$fecha."</td> <td>".$hor."</td> <td>".$edad."</td> <td>".$med1."</td> <td>".$idp.'</td></tr>';
+    }
+  ?>
+
+  </tbody>
+  </table>
+
+    </div>
+  </div>
+    </main>
 
 
     <footer class="page-footer">

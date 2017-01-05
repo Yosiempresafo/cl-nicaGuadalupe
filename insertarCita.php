@@ -33,7 +33,7 @@
 		Fecha: <br>
 		<input type="text" name="fecha" value="Fecha deseada para la cita (aaaa-dd-mm)"><br>
 		Hora: <br>
-		<input type="text" name="hora" value="Hora deseada para la cita"><br>
+		<input type="time" name="hora" value="Hora deseada para la cita"><br>
 	
 		<input type="submit" value="Enviar">
 
