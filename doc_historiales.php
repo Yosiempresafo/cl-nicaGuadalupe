@@ -45,6 +45,57 @@ $mat = $_SESSION['mat'];
           </div>
         </nav>
       </div>
+
+
+<div class="row">
+    <div class="col offset-m1 m10">
+    <h3 class="center">Datos de pacientes</h3>
+    <table class="highlight responsive-table">
+      <thead>
+          <tr>
+              <th>idPaciente</th>
+              <th>Nombre</th>
+              <th>Apellido Paterno</th>
+              <th>Apellido Materno</th>
+              <th>Edad</th>
+              <th>Sangre</th>
+              <th>Domicilio</th>
+              <th>Correo</th>
+              <th>Teléfono</th>
+              <th>Alegias</th>
+              <th>Historial</th>
+              <th>idMédico</th>
+          </tr>
+      </thead>
+      <tbody>
+      <?php
+        $res = mysqli_query($conector,"SELECT * FROM `paciente`");
+          while ($fila = mysqli_fetch_array($res)){
+            $idp = utf8_encode($fila["idPaciente"]);    
+            $nom = utf8_encode($fila["Nombre"]);    
+            $ap = utf8_encode($fila["APaterno"]);
+            $am = utf8_encode($fila["AMaterno"]);
+            $edad = utf8_encode($fila["Edad"]);
+            $sangre = utf8_encode($fila["TipoSangre"]);
+            $dom = utf8_encode($fila["Domicilio"]);
+            $corr = utf8_encode($fila["Correo"]);
+            $tel = utf8_encode($fila["Telefono"]);
+            $ale = utf8_encode($fila["Alergias"]);
+            $histo = utf8_encode($fila["Historial"]);
+            $idm = utf8_encode($fila["idMedico"]);
+            echo '<tr><td>'.$idp."</td> <td>".$nom."</td> <td>".$ap."</td> <td>".$am."</td> <td>".$edad."</td> <td>".$sangre."</td> <td>".$dom."</td> <td>".$corr."</td> <td>".$tel."</td> <td>".$ale."</td> <td>".$histo."</td> <td>".$idm.'</td></tr>';
+          }
+      ?>
+      </tbody>
+  </table>
+
+    </div>
+  </div>
+
+  <br><br>
+
+
+
     </main>
 
 
