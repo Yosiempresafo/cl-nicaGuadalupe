@@ -1,6 +1,10 @@
 <?php
 
 include("./conexion.php");
+session_start(); 
+$nom = $_SESSION['nom'];
+$pat = $_SESSION['pat'];
+$mat = $_SESSION['mat'];
 
 ?>
 
@@ -25,14 +29,14 @@ include("./conexion.php");
             <a class="brand-logo" href="index.html">&nbsp;&nbsp;&nbsp;Clínica Guadalupe</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-              <li class=""><span class="gray">Hola, USUARIO&nbsp;</span></li>
+              <li class=""><span class="gray">Hola, <?php echo $nom.' '.$pat.' '.$mat;?>&nbsp;</span></li>
               <li class="active"><a href="doc_inventario.php">Inventario</a></li>
               <li class=""><a href="doc_consultas.php">Consultas</a></li>
               <li class=""><a href="doc_historiales.php">Historiales Clínicos</a></li>
               <li class=""><a href="admin.php">¿Eres Administrador?</a></li>
               <li class=""><a href="index.html">Salir&nbsp;&nbsp;</a></li>
             <ul class="side-nav oro" id="mobile-demo">
-              <li class=""><a href="">Hola, USUARIO</a></li>
+              <li class=""><a href="">Hola, <?php echo $nom.' '.$pat.' '.$mat;?></a></li>
               <li class="active"><a href="doc_inventario.php">Inventario</a></li>
               <li class=""><a href="doc_consultas.php">Consultas</a></li>
               <li class=""><a href="doc_historiales.php">Historiales Clínicos</a></li>

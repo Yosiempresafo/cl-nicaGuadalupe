@@ -1,16 +1,22 @@
 <?php
 include("./conexion.php");  //importa conexion.php
 
+session_start(); //Iniciamos o Continuamos la sesion
 
 $user = $_GET["us"];
 $password = $_GET["ps"];
+
+$_SESSION['us'] = $user;
+$_SESSION['ps'] = $password;
+
+echo $_SESSION['us'];
 
 
 $sql = "SELECT * FROM personal WHERE Usuario = '$user' and Contra = '$password'";
 $res = mysqli_query($conector,$sql);
 
-if (mysqli_num_rows($res) == 0 ) {
-    header('Location: errorLogin.html');
+if (mysqli_num_rows($res)==0) {
+  echo 'error';
 }
 
 while ($fila = mysqli_fetch_array($res)){
@@ -21,12 +27,10 @@ while ($fila = mysqli_fetch_array($res)){
       $tel = utf8_encode($fila["Telefono"]);   
       $admin = utf8_encode($fila["Admin"]); 
 
-      echo $nom;
-      echo $pat;  
-      echo $mat;   
-      echo $email;   
-      echo $tel;
-      echo $admin;
+      $_SESSION['nom'] = $nom;
+      $_SESSION['pat'] = $pat;
+      $_SESSION['mat'] = $mat;
+      $_SESSION['ad'] = $admin;
     }
 
 
@@ -61,7 +65,7 @@ while ($fila = mysqli_fetch_array($res)){
               <li class=""><a href="admin.php">¿Eres Administrador?</a></li>
               <li class=""><a href="index.html">Salir&nbsp;&nbsp;</a></li>
             <ul class="side-nav oro" id="mobile-demo">
-              <li class=""><a href="">Hola, USUARIO</a></li>
+              <li class=""><a href="">Hola, <?php echo $nom.' '.$pat.' '.$mat;?>O</a></li>
               <li class=""><a href="doc_inventario.php">Inventario</a></li>
               <li class="active"><a href="doc_consultas.php">Consultas</a></li>
               <li class=""><a href="doc_historiales.php">Historiales Clínicos</a></li>
