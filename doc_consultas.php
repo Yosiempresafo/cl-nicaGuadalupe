@@ -1,37 +1,11 @@
 <?php
 include("./conexion.php");  //importa conexion.php
 
-session_start(); //Iniciamos o Continuamos la sesion
-
-$user = $_GET["us"];
-$password = $_GET["ps"];
-
-$_SESSION['us'] = $user;
-$_SESSION['ps'] = $password;
-
-
-
-$sql = "SELECT * FROM personal WHERE Usuario = '$user' and Contra = '$password'";
-$res = mysqli_query($conector,$sql);
-
-if (mysqli_num_rows($res)==0) {
-  echo 'error';
-}
-
-while ($fila = mysqli_fetch_array($res)){
-      $nom = utf8_encode($fila["Nombre"]);   
-      $pat = utf8_encode($fila["APaterno"]);   
-      $mat = utf8_encode($fila["AMaterno"]);   
-      $email = utf8_encode($fila["Correo"]);   
-      $tel = utf8_encode($fila["Telefono"]);   
-      $admin = utf8_encode($fila["Admin"]); 
-
-      $_SESSION['nom'] = $nom;
-      $_SESSION['pat'] = $pat;
-      $_SESSION['mat'] = $mat;
-      $_SESSION['ad'] = $admin;
-    }
-
+include("./conexion.php");
+session_start(); 
+$nom = $_SESSION['nom'];
+$pat = $_SESSION['pat'];
+$mat = $_SESSION['mat'];
 
 
 ?>

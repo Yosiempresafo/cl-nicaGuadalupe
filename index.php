@@ -1,3 +1,14 @@
+<?php
+//dado que desde caulquier punto es posible regresar al index, destruimos 
+//las variables de sesion para evitar errores
+
+if(session_start()){
+  session_destroy();
+  $_SESSION = array();
+  $_POST = array();
+  $_GET = array();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
