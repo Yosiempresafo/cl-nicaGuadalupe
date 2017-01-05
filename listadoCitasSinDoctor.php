@@ -10,7 +10,7 @@ echo '--------------------------------------------------------------------------
 	<meta charset="UTF-8">
 	<title>Clinica</title>
 
-	<h1>Imprime todos las citas con doctor asignado</h1>
+	<h1>Imprime todos las citas sin doctor asignado</h1>
 	<?php 
 		$res = mysqli_query($conector,"SELECT * FROM cita A INNER JOIN paciente B on A.idPaciente=B.idPaciente WHERE B.idMedico IS NULL;");
 		if($res)
